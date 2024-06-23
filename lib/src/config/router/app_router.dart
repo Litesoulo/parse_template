@@ -11,5 +11,8 @@ class AppRouter extends _$AppRouter {
           initial: true,
           page: SplashRoute.page,
         ),
+        AutoRoute(
+          page: LoginRoute.page,
+        ),
       ];
 }

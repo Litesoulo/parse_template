@@ -1,11 +1,11 @@
-import 'package:talker/talker.dart';
+import 'package:talker_flutter/talker_flutter.dart';
 
 import 'initialization_step.dart';
 
-class ItializationCallback {
+class InitializationCallback {
   final Talker _talker;
 
-  const ItializationCallback({
+  const InitializationCallback({
     required Talker talker,
   }) : _talker = talker;
 
