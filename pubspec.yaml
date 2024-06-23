@@ -9,11 +9,44 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  
+  # Service Locator
+  get_it: ^7.7.0
+
+  # Navigation
+  auto_route: ^8.2.0
+
+  # Data
+  parse_server_sdk_flutter: ^8.0.0
+  shared_preferences: ^2.2.3
+  sembast: ^3.7.1+2
+  sembast_web: ^2.4.0+2
+
+  # State Management
+  mobx: ^2.3.3+2
+  flutter_mobx: ^2.2.1+1
+
+  # System
+  path: ^1.9.0
+
+  # Utility
+  xxtea: ^2.1.0
+  talker_flutter: ^4.2.4
 
 dev_dependencies:
+  # Debug & Testing
   flutter_test:
     sdk: flutter
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
+
+  # Code generation
+  build_runner: ^2.4.11
+
+  # Navigation
+  auto_route_generator: ^8.0.0
+
+  # State management
+  mobx_codegen: ^2.6.1
 
 flutter:
   uses-material-design: true
