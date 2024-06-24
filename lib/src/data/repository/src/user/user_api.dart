@@ -1,25 +1,24 @@
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 import '../../../base/api_response.dart';
-import '../../../model/user.dart';
+import '../../../model/app_parse_user.dart';
 
 class UserApi {
-  Future<ApiResponse> login(User user) async {
-    return getApiResponse<User>(await user.login());
+  Future<ApiResponse> login(AppParseUser user) async {
+    return getApiResponse<AppParseUser>(await user.login());
   }
 
-  Future<User>? currentUser() {
-    return ParseUser.currentUser() as Future<User>;
-  }
+  Future<AppParseUser>? currentUser() => ParseUser.currentUser() as Future<AppParseUser>;
 
   Future<ApiResponse> getCurrentUserFromServer() async {
     final ParseUser user = await ParseUser.currentUser();
-    return getApiResponse<User>(await ParseUser.getCurrentUserFromServer(user.get<String>(keyHeaderSessionToken)!));
+
+    return getApiResponse<AppParseUser>(
+      await ParseUser.getCurrentUserFromServer(user.get<String>(keyHeaderSessionToken)!),
+    );
   }
 
-  Future<ApiResponse> save(User user) async {
-    return getApiResponse<User>(await user.save());
-  }
+  Future<ApiResponse> save(AppParseUser user) async => getApiResponse<AppParseUser>(await user.save());
 
-  Future<void> logout(User user) async => await user.logout();
+  Future<void> logout(AppParseUser user) async => await user.logout();
 }

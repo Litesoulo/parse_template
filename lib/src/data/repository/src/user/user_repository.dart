@@ -1,5 +1,5 @@
 import '../../../base/api_response.dart';
-import '../../../model/user.dart';
+import '../../../model/app_parse_user.dart';
 import 'user_api.dart';
 
 class UserRepository {
@@ -9,11 +9,11 @@ class UserRepository {
     required UserApi api,
   }) : _api = api;
 
-  Future<ApiResponse?>? login(User user) => _api.login(user);
+  Future<ApiResponse?>? login(AppParseUser user) => _api.login(user);
 
-  Future<void> logout(User user) async => await _api.logout(user);
+  Future<void> logout(AppParseUser user) async => await _api.logout(user);
 
-  Future<User?>? currentUser() async => await _api.currentUser();
+  Future<AppParseUser?>? currentUser() async => await _api.currentUser();
 
   Future<ApiResponse?>? getCurrentUserFromServer() async => await _api.getCurrentUserFromServer();
 }
