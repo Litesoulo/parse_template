@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 import 'store/application_store.dart';
 
@@ -18,6 +19,7 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _applicationStore.init();
+      FlutterNativeSplash.remove();
     });
 
     super.initState();
