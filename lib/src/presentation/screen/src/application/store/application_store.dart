@@ -7,14 +7,13 @@ import '../../../../../sl.dart';
 import '../../../../../utility/runner/data/initialization_callback.dart';
 import '../../../../../utility/runner/data/initialization_status.dart';
 import '../../../../../utility/runner/data/initialization_step.dart';
+import '../../../../../utility/services/parse_push_service.dart';
 import '../../../init_stores.dart';
 
 part 'application_store.g.dart';
 
-// This is the class used by rest of your codebase
 class ApplicationStore = _ApplicationStore with _$ApplicationStore;
 
-// The store-class
 abstract class _ApplicationStore with Store {
   @observable
   InitializationStatus initializationStatus = InitializationStatus.progress;
@@ -26,6 +25,10 @@ abstract class _ApplicationStore with Store {
     InitializationStep(
       title: 'Init data sources',
       init: () async => InitDataSourceUseCase()(),
+    ),
+    InitializationStep(
+      title: 'Init services',
+      init: () async => ParsePushService().initialize(),
     ),
     InitializationStep(
       title: 'Init repository',

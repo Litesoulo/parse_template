@@ -1,7 +1,11 @@
+import 'package:flutter/foundation.dart';
+import 'package:path_provider/path_provider.dart';
+
 import '../../domain/use_case/use_case.dart';
 import '../../sl.dart';
 import 'init_parse/init_parse_sdk.dart';
 import 'sembast/sembast_client.dart';
+import 'sembast/sembast_constants.dart';
 import 'shared_preferences/shared_preferences_helper.dart';
 
 class InitDataSourceUseCase implements UseCase {
@@ -14,9 +18,9 @@ class InitDataSourceUseCase implements UseCase {
 
     // TODO Init sembast
     final sembastClient = await SembastClient.provideDatabase(
-      databaseName: 'databaseName',
-      databasePath: 'databasePath',
-      encryptionKey: 'encryptionKey',
+      databaseName: SembastConstants.dbName,
+      databasePath: kIsWeb ? '/assets/db' : (await getApplicationDocumentsDirectory()).path,
+      encryptionKey: '.9qgY:`;_;jWwO#[3_=4,b;M{=O)[N',
     );
 
     sl.registerSingleton<SembastClient>(sembastClient);
