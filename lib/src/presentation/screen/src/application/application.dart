@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../config/router/app_router.dart';
+import '../../../../core/config/router/app_router.dart';
 import '../../../../sl.dart';
 
 class Application extends StatelessWidget {

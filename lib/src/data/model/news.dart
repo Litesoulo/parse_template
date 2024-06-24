@@ -1,6 +1,6 @@
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
-import '../../utility/mixin/parse_object_comparison_mixin.dart';
+import '../../core/utility/mixin/parse_object_comparison_mixin.dart';
 import 'news_gallery.dart';
 
 class News extends ParseObject with CompareParseObjectsMixin implements ParseCloneable {

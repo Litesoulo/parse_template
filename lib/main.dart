@@ -4,10 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
-import 'src/config/router/app_router.dart';
+import 'src/core/config/router/app_router.dart';
 import 'src/presentation/screen/screen.dart';
 import 'src/sl.dart';
-import 'src/utility/logger/logger.dart';
+import 'src/core/utility/logger/logger.dart';
 
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
