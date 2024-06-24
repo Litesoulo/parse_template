@@ -1,15 +1,18 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'prefs.dart';
+
 class SharedPreferencesHelper {
-  late final SharedPreferences _preferences;
+  final SharedPreferences _preferences;
 
-  SharedPreferencesHelper() {
-    _init();
-  }
+  SharedPreferencesHelper({
+    required SharedPreferences preferences,
+  }) : _preferences = preferences;
 
-  _init() async {
-    _preferences = await SharedPreferences.getInstance();
-  }
+  Future<void> clear() async => await _preferences.clear();
 
-  clear() async => await _preferences.clear();
+  // Is first app launch: ------------------------------------------------------
+  bool get isFirstAppLaunch => _preferences.getBool(Prefs.isFirstAppLaunch) ?? true;
+
+  Future<bool> setIsFirstAppLaunch(value) async => await _preferences.setBool(Prefs.isFirstAppLaunch, value);
 }

@@ -1,5 +1,5 @@
 import '../../../base/api_response.dart';
-import '../../../model/app_parse_user.dart';
+import '../../../model/src/app_parse_user.dart';
 import 'user_api.dart';
 
 class UserRepository {

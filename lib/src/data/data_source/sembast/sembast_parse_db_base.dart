@@ -118,6 +118,14 @@ abstract class SembastParseDbBase<T extends ParseObject> {
     return ApiResponse<T>(true, 200, null, null);
   }
 
+  Future<ApiResponse<T>> removeAll() async {
+    final Finder finder = Finder(filter: Filter.byKey(_store));
+
+    await _store.delete(_db, finder: finder);
+
+    return ApiResponse<T>(true, 200, null, null);
+  }
+
   Map<String, dynamic> convertItemToStorageMap(T item) {
     final Map<String, dynamic> values = <String, dynamic>{};
 

@@ -1,11 +1,12 @@
 import 'package:mobx/mobx.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
+import '../../../../../core/enum/app_open_status.dart';
 import '../../../../../core/services/push_notification/parse_push_service.dart';
 import '../../../../../core/utility/runner/data/initialization_callback.dart';
-import '../../../../../core/utility/runner/data/initialization_status.dart';
 import '../../../../../core/utility/runner/data/initialization_step.dart';
 import '../../../../../data/data_source/init_data_source.dart';
+import '../../../../../data/data_source/shared_preferences/shared_preferences_helper.dart';
 import '../../../../../data/repository/init_repository.dart';
 import '../../../../../sl.dart';
 import '../../../init_stores.dart';
@@ -16,7 +17,7 @@ class ApplicationStore = _ApplicationStore with _$ApplicationStore;
 
 abstract class _ApplicationStore with Store {
   @observable
-  InitializationStatus initializationStatus = InitializationStatus.progress;
+  AppOpenStatus status = AppOpenStatus.loading;
 
   @observable
   double initializationProgress = 0;
@@ -63,6 +64,8 @@ abstract class _ApplicationStore with Store {
         );
       }
     } catch (error, stackTrace) {
+      status = AppOpenStatus.error;
+
       // Initialization error
       callback.onError(
         initializationSteps,
@@ -77,5 +80,13 @@ abstract class _ApplicationStore with Store {
     callback.onSuccess(
       stopwatch.elapsed,
     );
+
+    if (sl<SharedPreferencesHelper>().isFirstAppLaunch) {
+      status = AppOpenStatus.firstLaunch;
+
+      sl<SharedPreferencesHelper>().setIsFirstAppLaunch(false);
+    } else {
+      status = AppOpenStatus.unauthorized;
+    }
   }
 }

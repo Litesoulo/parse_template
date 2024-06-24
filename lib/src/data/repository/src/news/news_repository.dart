@@ -1,6 +1,5 @@
 import '../../../base/api_response.dart';
-import '../../../model/news.dart';
-import '../../../model/news_gallery.dart';
+import '../../../model/model.dart';
 import 'news_api.dart';
 import 'news_db.dart';
 import 'news_gallery_api.dart';
@@ -50,7 +49,14 @@ class NewsRepository {
         return newsResponse;
       }
 
-      final newsWithGallery = mergeNewsWithGallery(newsResponse.results, newsGalleryResponse.results);
+      final galleryList = newsGalleryResponse.results;
+
+      final newsWithGallery = mergeNewsWithGallery(newsResponse.results, galleryList);
+
+      await removeAll();
+
+      await _newsDb.addAll(newsWithGallery);
+      await _newsGalleryDb.addAll(galleryList);
 
       return newsResponse.copyWith(
         results: newsWithGallery,
@@ -65,5 +71,10 @@ class NewsRepository {
     return newsResponse.copyWith(
       results: newsWithGallery,
     );
+  }
+
+  Future<void> removeAll() async {
+    await _newsDb.removeAll();
+    await _newsGalleryDb.removeAll();
   }
 }

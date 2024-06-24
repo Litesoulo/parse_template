@@ -14,5 +14,17 @@ class AppRouter extends _$AppRouter {
         AutoRoute(
           page: LoginRoute.page,
         ),
+        AutoRoute(
+          page: ErrorRoute.page,
+        ),
+        AutoRoute(
+          page: OnboardingRoute.page,
+        ),
+        AutoRoute(
+          page: UpdateRequiredRoute.page,
+        ),
+        AutoRoute(
+          page: HomeRoute.page,
+        ),
       ];
 }

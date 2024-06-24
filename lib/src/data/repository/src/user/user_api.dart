@@ -1,7 +1,7 @@
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 import '../../../base/api_response.dart';
-import '../../../model/app_parse_user.dart';
+import '../../../model/src/app_parse_user.dart';
 
 class UserApi {
   Future<ApiResponse> login(AppParseUser user) async {

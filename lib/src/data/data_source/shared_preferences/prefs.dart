@@ -7,4 +7,6 @@ abstract final class Prefs {
 
   // User
   static const String parseSessionToken = 'parseSessionToken';
+
+  static const String isFirstAppLaunch = 'isFirstAppLaunch';
 }

@@ -1,7 +1,11 @@
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
+import 'package:mobx/mobx.dart';
+import 'package:parse_template/src/core/config/router/app_router.dart';
 
+import '../../../../core/enum/app_open_status.dart';
 import 'store/application_store.dart';
 
 @RoutePage()
@@ -27,9 +31,51 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: CircularProgressIndicator(),
+    return ReactionBuilder(
+      // builder: (_) => reaction(
+      //   (_) => sl<CategoriesStore>().dataStatus,
+      //   (status) {
+      //     switch (status) {
+      //       case DataStatus.success:
+      //         FlushbarHelper.showSuccess(context);
+      //         break;
+      //       case DataStatus.fail:
+      //         FlushbarHelper.showError(context);
+      //         break;
+      //       default:
+      //     }
+      //   },
+      // ),
+      builder: (_) => reaction(
+        (_) => _applicationStore.status,
+        (status) {
+          switch (status) {
+            case AppOpenStatus.error:
+              context.pushRoute(const ErrorRoute());
+              break;
+            case AppOpenStatus.firstLaunch:
+              context.pushRoute(const OnboardingRoute());
+              break;
+            // case AppOpenStatus.updateRequired:
+            //   context.pushRoute(const UpdateRequiredRoute());
+            //   break;
+            // case AppOpenStatus.credentialsExpired:
+            //   context.pushRoute(const LoginRoute());
+            //   break;
+            case AppOpenStatus.unauthorized:
+              context.pushRoute(const LoginRoute());
+              break;
+            // case AppOpenStatus.authenticated:
+            //   context.pushRoute(const HomeRoute());
+            //   break;
+            default:
+          }
+        },
+      ),
+      child: const Scaffold(
+        body: Center(
+          child: CircularProgressIndicator(),
+        ),
       ),
     );
   }

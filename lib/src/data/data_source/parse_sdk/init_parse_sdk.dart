@@ -4,9 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 import '../../../domain/use_case/use_case.dart';
-import '../../model/app_parse_user.dart';
-import '../../model/news.dart';
-import '../../model/news_gallery.dart';
+import '../../model/model.dart';
 
 class InitParseSdkUseCase implements UseCase {
   @override
