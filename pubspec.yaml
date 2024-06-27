@@ -42,6 +42,11 @@ dependencies:
   firebase_messaging: ^15.0.1
   flutter_local_notifications: ^17.1.2
 
+  # UI
+  cupertino_icons: ^1.0.8
+  lottie: ^3.0.0
+  flutter_svg: ^2.0.9
+
 dev_dependencies:
   # Debug & Testing
   flutter_test:
@@ -51,6 +56,9 @@ dev_dependencies:
   # Code generation
   build_runner: ^2.4.11
 
+  # Assets
+  flutter_gen_runner: ^5.5.0+1
+
   # Navigation
   auto_route_generator: ^8.0.0
 
@@ -59,6 +67,22 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
+  generate: true
+
+  fonts:
+    - family: Comfortaa
+      fonts:
+      - asset: assets/fonts/Comfortaa-Regular.ttf
+        weight: 500
+      - asset: assets/fonts/Comfortaa-Medium.ttf
+        weight: 700
+      - asset: assets/fonts/Comfortaa-Bold.ttf
+        weight: 900
+
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/tmp/
 
 
 flutter_native_splash:
@@ -82,3 +106,15 @@ icons_launcher:
     ios:
       enable: true
       image_path: "assets/application/app_icon_ios.png"
+
+flutter_gen:
+  output: lib/generated/assets/
+  line_length: 120
+
+  colors:
+    inputs:
+      - assets/colors/colors.xml
+
+  integrations:
+    flutter_svg: true
+    lottie: true

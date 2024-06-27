@@ -1,10 +1,10 @@
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:mobx/mobx.dart';
-import 'package:parse_template/src/core/config/router/app_router.dart';
 
+import '../../../../core/config/router/app_router.dart';
 import '../../../../core/enum/app_open_status.dart';
 import 'store/application_store.dart';
 

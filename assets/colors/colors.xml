@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Light Mode Colors -->
+    <color name="scaffoldBackgroundLight">#FFF6F4</color>
+
+    <!-- Dark Mode Colors -->
+    <color name="scaffoldBackgroundDark">#1E1E1E</color>
+</resources>
