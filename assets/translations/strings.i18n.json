@@ -1,0 +1,12 @@
+{
+    "loginScreen": {
+        "login": "Почта",
+        "password": "Пароль",
+        "emailIsNotValid": "Неверный формат email",
+        "passwordIsNotValid": "Пароль не соответствует требованиям",
+        "signIn": "Войти",
+        "continueWithoutAccount": "Продолжить без аккаунта",
+        "failedLogin": "Не удалось войти",
+        "networkError": "Ошибка соединения с интернетом"
+    }
+}

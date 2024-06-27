@@ -1,0 +1,12 @@
+{
+    "loginScreen": {
+        "login": "Poçta",
+        "password": "Açar sözi",
+        "emailIsNotValid": "Poçtapyzyň formaty nädogry",
+        "passwordIsNotValid": "Açar sözi talaba laýyk däl",
+        "signIn": "Giriş",
+        "continueWithoutAccount": "Hasapsyz dowam et",
+        "failedLogin": "Ýalňyşlyk ýüze çykdy",
+        "networkError": "Internet bilen bagly näsazlyk ýüze çykdy"
+    }
+}

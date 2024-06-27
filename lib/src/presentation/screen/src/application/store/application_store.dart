@@ -11,7 +11,7 @@ import '../../../../../data/repository/init_repository.dart';
 import '../../../../../sl.dart';
 import '../../../init_stores.dart';
 
-part 'application_store.g.dart';
+part '../../../../../../generated/src/presentation/screen/src/application/store/application_store.g.dart';
 
 class ApplicationStore = _ApplicationStore with _$ApplicationStore;
 
