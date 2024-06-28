@@ -5,7 +5,6 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
-import 'generated/strings.g.dart';
 import 'src/core/config/router/app_router.dart';
 import 'src/core/utility/logger/logger.dart';
 import 'src/data/data_source/shared_preferences/shared_preferences_helper.dart';
@@ -32,14 +31,6 @@ void main() async {
     ),
   );
 
-  // TODO Set initial locale
-  String? storedLocale = loadLocaleFromStorage();
-  if (storedLocale == null) {
-    LocaleSettings.useDeviceLocale();
-  } else {
-    LocaleSettings.setLocaleRaw(storedLocale);
-  }
-
   sl.registerSingleton<AppRouter>(
     AppRouter(),
   );
@@ -54,9 +45,4 @@ Future<void> setPreferredOrientations() {
     // DeviceOrientation.landscapeRight,
     // DeviceOrientation.landscapeLeft,
   ]);
-}
-
-String? loadLocaleFromStorage() {
-  // TODO add locale from storage logic
-  return null;
 }
