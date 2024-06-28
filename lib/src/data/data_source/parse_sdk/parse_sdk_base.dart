@@ -29,8 +29,23 @@ abstract class ParseSdkBase<T extends ParseObject> {
     return ApiResponse<T>(true, 200, responses, null);
   }
 
-  Future<ApiResponse<T>> getAll() async {
-    return getApiResponse<T>(await _objectConstructor().getAll());
+  Future<ApiResponse<T>> getAll({
+    List<String>? keysToInclude,
+    int? limit,
+  }) async {
+    final QueryBuilder query = QueryBuilder(_objectConstructor());
+
+    if (keysToInclude != null) {
+      query.includeObject(keysToInclude);
+    }
+
+    if (limit != null) {
+      query.setLimit(limit);
+    }
+
+    query.orderByDescending(keyVarCreatedAt);
+
+    return getApiResponse<T>(await query.query());
   }
 
   Future<ApiResponse<T>> getById(String id) async {

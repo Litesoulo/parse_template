@@ -8,6 +8,7 @@ import '../repository/src/news/news_api.dart';
 import '../repository/src/news/news_db.dart';
 import '../repository/src/news/news_gallery_api.dart';
 import '../repository/src/news/news_gallery_db.dart';
+import '../repository/src/news/news_gallery_repository.dart';
 import '../repository/src/news/news_repository.dart';
 import 'http/dio_http_client.dart';
 import 'http/dio_http_config.dart';
@@ -39,15 +40,20 @@ class InitDataSourceUseCase implements UseCase {
     // Init repositories
     sl.registerSingleton<NewsRepository>(
       NewsRepository(
-        newsApi: NewsApi(),
-        newsGalleryApi: NewsGalleryApi(),
-        newsGalleryDb: NewsGalleryDb(
-          sembastClient: sembastClient,
-          constructor: () => NewsGallery(),
-        ),
-        newsDb: NewsDb(
+        api: NewsApi(),
+        db: NewsDb(
           sembastClient: sembastClient,
           constructor: () => News(),
+        ),
+      ),
+    );
+
+    sl.registerSingleton<NewsGalleryRepository>(
+      NewsGalleryRepository(
+        api: NewsGalleryApi(),
+        db: NewsGalleryDb(
+          sembastClient: sembastClient,
+          constructor: () => NewsGallery(),
         ),
       ),
     );

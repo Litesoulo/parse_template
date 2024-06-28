@@ -15,7 +15,7 @@ class NewsScreen extends StatelessWidget {
     return Scaffold(
       body: RefreshIndicator(
         onRefresh: () async {
-          sl<NewsStore>().getNews(fromApi: true);
+          sl<NewsStore>().getItems(fromApi: true);
         },
         child: Observer(builder: (_) {
           final itemsList = sl<NewsStore>().itemsList;
@@ -32,9 +32,7 @@ class NewsScreen extends StatelessWidget {
                 },
               );
             case FutureStatus.pending:
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
+              return const Center(child: CircularProgressIndicator());
             default:
               return ListView();
           }

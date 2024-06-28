@@ -24,7 +24,7 @@ class InitStoresUseCase implements UseCase {
     sl.registerSingleton<NewsStore>(
       NewsStore(
         repository: sl<NewsRepository>(),
-      )..getNews(),
+      )..getItems(),
     );
   }
 }
