@@ -1,5 +1,3 @@
-import 'dart:convert' as json;
-
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 import 'package:sembast/sembast.dart';
 
@@ -8,31 +6,31 @@ import '../../base/api_response.dart';
 import 'sembast_client.dart';
 
 abstract class SembastParseDbBase<T extends ParseObject> {
-  final ParseObjectConstructor contructor;
+  final ParseObjectConstructor constructor;
   late final Database _db;
   late final StoreRef<String, Map<String, dynamic>> _store;
 
   SembastParseDbBase({
     required SembastClient sembastClient,
-    required this.contructor,
+    required this.constructor,
   }) {
     _db = sembastClient.database;
     _store = stringMapStoreFactory.store(
-      bigCamelToSnakeCase(contructor().parseClassName),
+      bigCamelToSnakeCase(constructor().parseClassName),
     );
   }
 
   Future<ApiResponse<T>> add(T item) async {
     final Map<String, dynamic> values = convertItemToStorageMap(item);
 
-    await _store.record(item.objectId ?? '').put(_db, values);
+    await _store.record(item.objectId ?? '').put(_db, values, merge: true);
 
     final Map<String, dynamic>? recordFromDB = await _store.record(item.objectId ?? '').get(_db);
 
     final recordItem = convertRecordToItem(values: recordFromDB);
 
     if (recordItem != null) {
-      return ApiResponse<T>(true, 200, <T>[recordItem], null);
+      return ApiResponse<T>(true, 200, [recordItem], null);
     } else {
       return errorResponse;
     }
@@ -45,7 +43,7 @@ abstract class SembastParseDbBase<T extends ParseObject> {
       final ApiResponse<T> response = await add(item);
 
       if (response.succeed) {
-        final T itemInDB = response.result!;
+        final T itemInDB = response.results?.firstOrNull ?? constructor() as T;
 
         itemsInDb.add(itemInDB);
       }
@@ -129,9 +127,7 @@ abstract class SembastParseDbBase<T extends ParseObject> {
   Map<String, dynamic> convertItemToStorageMap(T item) {
     final Map<String, dynamic> values = <String, dynamic>{};
 
-    values['value'] = json.jsonEncode(
-      item.toJson(full: true),
-    );
+    values['value'] = parseEncode(item, full: true);
 
     values[keyVarObjectId] = item.objectId;
 
@@ -162,7 +158,7 @@ abstract class SembastParseDbBase<T extends ParseObject> {
     for (final T item in items ?? []) {
       final ApiResponse response = await update(item);
       if (response.succeed) {
-        final T responseItem = response.result;
+        final T responseItem = response.results?.firstOrNull;
         updatedItems.add(responseItem);
       }
     }
@@ -178,9 +174,7 @@ abstract class SembastParseDbBase<T extends ParseObject> {
     try {
       values ??= record?.value;
 
-      final T item = (T as ParseObject).fromJson(
-        json.jsonDecode(values?['value']),
-      );
+      final T item = parseDecode(values?['value']);
 
       return item;
     } catch (e) {

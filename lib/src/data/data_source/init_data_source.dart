@@ -43,11 +43,11 @@ class InitDataSourceUseCase implements UseCase {
         newsGalleryApi: NewsGalleryApi(),
         newsGalleryDb: NewsGalleryDb(
           sembastClient: sembastClient,
-          contructor: () => NewsGallery(),
+          constructor: () => NewsGallery(),
         ),
         newsDb: NewsDb(
           sembastClient: sembastClient,
-          contructor: () => News(),
+          constructor: () => News(),
         ),
       ),
     );

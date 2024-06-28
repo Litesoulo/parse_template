@@ -26,4 +26,12 @@ class Logger {
 
     return true;
   }
+
+  static void i(Object message) => sl<Talker>().info(message);
+
+  static void w(Object message, [StackTrace? stackTrace]) => sl<Talker>().warning(message, stackTrace);
+
+  static void e(Object message, [StackTrace? stackTrace]) => sl<Talker>().error(message, stackTrace);
+
+  static void d(Object message) => sl<Talker>().debug(message);
 }

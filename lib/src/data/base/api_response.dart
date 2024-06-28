@@ -35,7 +35,7 @@ ApiResponse<T> getApiResponse<T extends ParseObject>(ParseResponse? response) {
   return ApiResponse(
     response?.success ?? false,
     response?.statusCode ?? 0,
-    response?.results as List<T>?,
+    response?.results?.cast<T>(),
     getApiError(response?.error),
   );
 }

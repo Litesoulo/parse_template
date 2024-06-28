@@ -4,6 +4,6 @@ import '../../../model/src/news.dart';
 class NewsDb extends SembastParseDbBase<News> {
   NewsDb({
     required super.sembastClient,
-    required super.contructor,
+    required super.constructor,
   });
 }

@@ -63,7 +63,7 @@ class _SplashScreenState extends State<SplashScreen> {
             //   context.pushRoute(const LoginRoute());
             //   break;
             case AppOpenStatus.unauthorized:
-              context.pushRoute(const LoginRoute());
+              context.pushRoute(const NewsRoute());
               break;
             // case AppOpenStatus.authenticated:
             //   context.pushRoute(const HomeRoute());

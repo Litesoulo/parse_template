@@ -4,4 +4,5 @@ export 'src/application/splash_screen.dart';
 export 'src/application/update_required_screen.dart';
 export 'src/home/home_screen.dart';
 export 'src/login/login_screen.dart';
+export 'src/news/news_screen.dart';
 export 'src/onboarding/onboarding_screen.dart';

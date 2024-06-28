@@ -1,7 +1,9 @@
 import '../../../generated/strings.g.dart';
+import '../../data/repository/src/news/news_repository.dart';
 import '../../domain/use_case/use_case.dart';
 import '../../sl.dart';
 import 'src/login/store/login_store.dart';
+import 'src/news/store/news_store.dart';
 
 class InitStoresUseCase implements UseCase {
   @override
@@ -14,8 +16,15 @@ class InitStoresUseCase implements UseCase {
       LocaleSettings.setLocaleRaw(storedLocale);
     }
 
+    // Stores
     sl.registerSingleton<LoginStore>(
       LoginStore(),
+    );
+
+    sl.registerSingleton<NewsStore>(
+      NewsStore(
+        repository: sl<NewsRepository>(),
+      )..getNews(),
     );
   }
 }

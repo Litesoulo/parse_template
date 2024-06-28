@@ -2,9 +2,9 @@ import 'dart:convert';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
-import 'package:flutter/foundation.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
+import '../../utility/logger/logger.dart';
 import 'local_notifications_service.dart';
 
 //To handle messages while application is in the foreground
@@ -16,7 +16,7 @@ Future<void> _firebaseMessagingBackgroundHandler(
   // If you're going to use other Firebase services in the background, such as Firestore,
   // make sure you call `initializeApp` before using other Firebase services.
   await Firebase.initializeApp();
-  debugPrint('Handling a background message ${message.messageId}');
+  Logger.i('Handling a background message ${message.messageId}');
 
   if (message.notification != null) {
     LocalNotificationService().showNotifications(
@@ -29,11 +29,11 @@ Future<void> _firebaseMessagingBackgroundHandler(
 
 // Handle remote message in foreground
 Future<void> _foregroundHandler(RemoteMessage message, LocalNotificationService localNotificationService) async {
-  debugPrint('Got a message whilst in the foreground!');
-  debugPrint('Message data: ${message.data}');
+  Logger.i('Got a message whilst in the foreground!');
+  Logger.i('Message data: ${message.data}');
 
   if (message.notification != null) {
-    debugPrint('Message also contained a notification: ${message.notification?.body}');
+    Logger.i('Message also contained a notification: ${message.notification?.body}');
 
     localNotificationService.showNotifications(
       code: message.hashCode,
@@ -47,7 +47,7 @@ Future<void> _foregroundHandler(RemoteMessage message, LocalNotificationService 
 // On message opened app
 Future<void> _onMessageOpenedApp(RemoteMessage message) async {
   // TODO Handle push opened app
-  debugPrint('got a new message');
+  Logger.i('got a new message');
 }
 
 class ParsePushService {
@@ -84,7 +84,7 @@ class ParsePushService {
       _firebaseMessaging,
       parseNotification: ParseNotification(
         onShowNotification: (value) {
-          debugPrint(value);
+          Logger.i(value);
         },
       ),
     );

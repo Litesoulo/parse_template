@@ -4,6 +4,6 @@ import '../../../model/src/news_gallery.dart';
 class NewsGalleryDb extends SembastParseDbBase<NewsGallery> {
   NewsGalleryDb({
     required super.sembastClient,
-    required super.contructor,
+    required super.constructor,
   });
 }

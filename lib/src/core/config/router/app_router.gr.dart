@@ -33,6 +33,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const LoginScreen(),
       );
     },
+    NewsRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const NewsScreen(),
+      );
+    },
     OnboardingRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -92,6 +98,20 @@ class LoginRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'LoginRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [NewsScreen]
+class NewsRoute extends PageRouteInfo<void> {
+  const NewsRoute({List<PageRouteInfo>? children})
+      : super(
+          NewsRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'NewsRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
