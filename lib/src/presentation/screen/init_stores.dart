@@ -1,4 +1,5 @@
 import '../../../generated/strings.g.dart';
+import '../../data/repository/src/news/news_gallery_repository.dart';
 import '../../data/repository/src/news/news_repository.dart';
 import '../../domain/use_case/use_case.dart';
 import '../../sl.dart';
@@ -24,6 +25,7 @@ class InitStoresUseCase implements UseCase {
     sl.registerSingleton<NewsStore>(
       NewsStore(
         repository: sl<NewsRepository>(),
+        repositoryGallery: sl<NewsGalleryRepository>(),
       )..getItems(),
     );
   }
