@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
-import 'package:parse_template/src/core/utility/logger/logger.dart';
 
+import '../../core/utility/logger/logger.dart';
 import '../../data/base/api_response.dart';
 
 part '../../../generated/src/presentation/store/parse_store_base.g.dart';

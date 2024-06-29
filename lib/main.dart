@@ -20,9 +20,9 @@ void main() async {
   // Basic initialization
   sl.registerSingleton<Talker>(
     Talker(
-      // Todo add talker observer to save logs
-      // observer: TalkerObserver(),
-    ),
+        // Todo add talker observer to save logs
+        // observer: TalkerObserver(),
+        ),
   );
 
   FlutterError.onError = Logger.logFlutterError;

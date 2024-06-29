@@ -43,6 +43,7 @@ dependencies:
   talker_flutter: ^4.2.4
   flutter_native_splash: ^2.4.0
   icons_launcher: ^2.1.7
+  connectivity_plus: ^5.0.2
 
   # Google services
   firebase_core: ^3.1.0
