@@ -37,25 +37,23 @@ class _MaterialApp extends StatelessWidget {
         },
         delay: 4000,
       ),
-      child: TranslationProvider(
-        child: Builder(builder: (context) {
-          return MaterialApp.router(
-            routerConfig: sl<AppRouter>().config(),
+      child: Builder(builder: (context) {
+        return MaterialApp.router(
+          routerConfig: sl<AppRouter>().config(),
 
-            // Locale
-            locale: TranslationProvider.of(context).flutterLocale,
-            localizationsDelegates: const [
-              TkMaterialLocalizations.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
+          // Locale
+          locale: TranslationProvider.of(context).flutterLocale,
+          localizationsDelegates: const [
+            TkMaterialLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
 
-            // Disable debug banner
-            debugShowCheckedModeBanner: false,
-          );
-        }),
-      ),
+          // Disable debug banner
+          debugShowCheckedModeBanner: false,
+        );
+      }),
     );
   }
 }
