@@ -20,20 +20,24 @@ class Application extends StatelessWidget {
 class _MaterialApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: sl<AppRouter>().config(),
+    return TranslationProvider(
+      child: Builder(builder: (context) {
+        return MaterialApp.router(
+          routerConfig: sl<AppRouter>().config(),
 
-      // Locale
-      locale: TranslationProvider.of(context).flutterLocale,
-      localizationsDelegates: const [
-        TkMaterialLocalizations.delegate,
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-        GlobalCupertinoLocalizations.delegate,
-      ],
+          // Locale
+          locale: TranslationProvider.of(context).flutterLocale,
+          localizationsDelegates: const [
+            TkMaterialLocalizations.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
 
-      // Disable debug banner
-      debugShowCheckedModeBanner: false,
+          // Disable debug banner
+          debugShowCheckedModeBanner: false,
+        );
+      }),
     );
   }
 }
