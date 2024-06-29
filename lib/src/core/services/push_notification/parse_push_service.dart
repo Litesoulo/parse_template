@@ -5,6 +5,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
 import '../../utility/logger/logger.dart';
+import '../constant/firebase_options.dart';
 import 'local_notifications_service.dart';
 
 //To handle messages while application is in the foreground
@@ -63,15 +64,9 @@ class ParsePushService {
 
   Future<void> initialize() async {
     // Initialize Firebase Core
-    // TODO add firebase options from parse
+    // TODO add firebase options
     await Firebase.initializeApp(
-      options: const FirebaseOptions(
-        apiKey: 'AIzaSyDePYQwMczkUmMlGVoGpwiRXgqZpnwCE1M',
-        appId: '1:551705223151:android:01ca59417f479df518201a',
-        messagingSenderId: '551705223151',
-        projectId: 'belent-bilim',
-        storageBucket: 'belent-bilim.appspot.com',
-      ),
+      options: DefaultFirebaseOptions.currentPlatform,
     );
 
     final localNotificationService = LocalNotificationService();
