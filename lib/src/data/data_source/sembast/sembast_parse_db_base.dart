@@ -117,9 +117,7 @@ abstract class SembastParseDbBase<T extends ParseObject> {
   }
 
   Future<ApiResponse<T>> removeAll() async {
-    final Finder finder = Finder(filter: Filter.byKey(_store));
-
-    await _store.delete(_db, finder: finder);
+    await _store.delete(_db);
 
     return ApiResponse<T>(true, 200, null, null);
   }
