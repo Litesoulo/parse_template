@@ -8,7 +8,7 @@
 PRODUCT_NAME = okgun_b2b
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.aksahypa.parseTemplate
+PRODUCT_BUNDLE_IDENTIFIER = com.aksahypa.okgunB2B
 
 // The copyright displayed in application information
 PRODUCT_COPYRIGHT = Copyright © 2024 com.aksahypa. All rights reserved.

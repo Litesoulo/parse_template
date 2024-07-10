@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "614720194810",
+    "project_id": "okgun-b2b",
+    "storage_bucket": "okgun-b2b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:614720194810:android:517821a835b54baf6aa143",
+        "android_client_info": {
+          "package_name": "com.aksahypa.okgun_b2b"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDX7SPADxHETpvvsbh6m6FO0XPlDzWxexc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
