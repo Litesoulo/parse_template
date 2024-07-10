@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'dart:io';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
-import '../../utility/logger/logger.dart';
+import '../../../core/utility/logger/logger.dart';
+import '../../../data/model/model.dart';
 import '../constant/firebase_options.dart';
 import 'local_notifications_service.dart';
 
@@ -21,10 +23,11 @@ Future<void> _firebaseMessagingBackgroundHandler(
 
   if (message.notification != null) {
     LocalNotificationService().showNotifications(
-        code: message.hashCode,
-        title: message.notification?.title ?? '',
-        body: message.notification?.body ?? '',
-        payload: jsonEncode(message.data));
+      code: message.hashCode,
+      title: message.notification?.title ?? '',
+      body: message.notification?.body ?? '',
+      payload: jsonEncode(message.data),
+    );
   }
 }
 
@@ -51,14 +54,14 @@ Future<void> _onMessageOpenedApp(RemoteMessage message) async {
   Logger.i('got a new message');
 }
 
-class ParsePushService {
-  static final ParsePushService _instance = ParsePushService._internal();
+class FCMService {
+  static final FCMService _instance = FCMService._internal();
 
-  factory ParsePushService() {
+  factory FCMService() {
     return _instance;
   }
 
-  ParsePushService._internal();
+  FCMService._internal();
 
   FirebaseMessaging get _firebaseMessaging => FirebaseMessaging.instance;
 
@@ -94,5 +97,36 @@ class ParsePushService {
 
     // On message opened app
     FirebaseMessaging.onMessageOpenedApp.listen(_onMessageOpenedApp);
+
+    try {
+      _firebaseMessaging.onTokenRefresh.listen(
+        (newToken) async {
+          final CustomParseUser? user = await ParseUser.currentUser();
+
+          if (user == null) return;
+
+          user.deviceToken = newToken;
+
+          await user.save();
+        },
+      );
+
+      // Subscribe to topics
+      FirebaseMessaging.instance.subscribeToTopic('news');
+
+      final currentInstallation = await ParseInstallation.currentInstallation();
+
+      currentInstallation.subscribeToChannel('news');
+
+      if (Platform.isAndroid) {
+        currentInstallation.subscribeToChannel('pushandroid');
+      } else if (Platform.isIOS) {
+        currentInstallation.subscribeToChannel('pushios');
+      }
+
+      await currentInstallation.save();
+    } catch (e) {
+      Logger.e(e);
+    }
   }
 }

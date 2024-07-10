@@ -2,7 +2,7 @@ import 'package:mobx/mobx.dart';
 import 'package:talker_flutter/talker_flutter.dart';
 
 import '../../../../../core/enum/app_open_status.dart';
-import '../../../../../core/services/push_notification/parse_push_service.dart';
+import '../../../../../core/services/push_notification/fcm_service.dart';
 import '../../../../../core/utility/runner/data/initialization_callback.dart';
 import '../../../../../core/utility/runner/data/initialization_step.dart';
 import '../../../../../data/data_source/init_data_source.dart';
@@ -29,7 +29,7 @@ abstract class _ApplicationStore with Store {
     ),
     InitializationStep(
       title: 'Init services',
-      init: () async => ParsePushService().initialize(),
+      init: () async => FCMService().initialize(),
     ),
     InitializationStep(
       title: 'Init repository',

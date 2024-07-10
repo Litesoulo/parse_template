@@ -18,7 +18,15 @@ class InitParseSdkUseCase implements UseCase {
         sendSessionId: sendSessionId ?? true,
         securityContext: securityContext,
       ),
-      parseUserConstructor: (username, password, emailAddress, {client, debug, sessionToken}) => AppParseUser(
+      parseUserConstructor: (
+        username,
+        password,
+        emailAddress, {
+        client,
+        debug,
+        sessionToken,
+      }) =>
+          CustomParseUser(
         username: username,
         password: password,
         emailAddress: emailAddress,
