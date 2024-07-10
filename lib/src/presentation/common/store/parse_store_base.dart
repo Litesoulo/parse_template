@@ -1,9 +1,9 @@
 import 'package:mobx/mobx.dart';
 
-import '../../core/utility/logger/logger.dart';
-import '../../data/base/api_response.dart';
+import '../../../core/utility/logger/logger.dart';
+import '../../../data/base/api_response.dart';
 
-part '../../../generated/src/presentation/store/parse_store_base.g.dart';
+part '../../../../generated/src/presentation/common/store/parse_store_base.g.dart';
 
 class ParseStoreBase<T> = _ParseStoreBase<T> with _$ParseStoreBase<T>;
 

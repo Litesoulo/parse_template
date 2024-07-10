@@ -77,6 +77,9 @@ dev_dependencies:
   # State management
   mobx_codegen: ^2.6.1
 
+  # Extra
+  import_sorter: ^4.6.0
+
 flutter:
   uses-material-design: true
   generate: true

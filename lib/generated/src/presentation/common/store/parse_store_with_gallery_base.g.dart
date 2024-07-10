@@ -1,6 +1,6 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of '../../../../src/presentation/store/parse_store_with_gallery_base.dart';
+part of '../../../../../src/presentation/common/store/parse_store_with_gallery_base.dart';
 
 // **************************************************************************
 // StoreGenerator

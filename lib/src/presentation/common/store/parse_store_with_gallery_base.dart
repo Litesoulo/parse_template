@@ -1,11 +1,11 @@
 import 'package:mobx/mobx.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
-import '../../core/utility/logger/logger.dart';
-import '../../data/base/api_response.dart';
-import '../../data/data_source/repository/parse_sembast_repository_base.dart';
+import '../../../core/utility/logger/logger.dart';
+import '../../../data/base/api_response.dart';
+import '../../../data/data_source/repository/parse_sembast_repository_base.dart';
 
-part '../../../generated/src/presentation/store/parse_store_with_gallery_base.g.dart';
+part '../../../../generated/src/presentation/common/store/parse_store_with_gallery_base.g.dart';
 
 class ParseStoreBaseWithGallery<T extends ParseObject, G extends ParseObject> = _ParseStoreBaseWithGallery<T, G>
     with _$ParseStoreBaseWithGallery<T, G>;
