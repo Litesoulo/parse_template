@@ -54,6 +54,16 @@ class _MaterialApp extends StatelessWidget {
 
           // Disable debug banner
           debugShowCheckedModeBanner: false,
+
+          builder: (context, child) => Localizations.override(
+            context: context,
+            locale: const Locale('tk'),
+            delegates: const [
+              TkMaterialLocalizations.delegate,
+              TkCupertinoLocalizations.delegate,
+            ],
+            child: child,
+          ),
         );
       }),
     );
