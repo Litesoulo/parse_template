@@ -4,6 +4,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 
 import '../../../../../generated/strings.g.dart';
+import '../../../../core/config/localization/tk_cupertino_localization_delegate.dart';
 import '../../../../core/config/localization/tk_material_localizations_delegate.dart';
 import '../../../../core/config/router/app_router.dart';
 import '../../../../sl.dart';
@@ -45,6 +46,7 @@ class _MaterialApp extends StatelessWidget {
           locale: TranslationProvider.of(context).flutterLocale,
           localizationsDelegates: const [
             TkMaterialLocalizations.delegate,
+            TkCupertinoLocalizations.delegate,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
