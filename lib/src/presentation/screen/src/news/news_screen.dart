@@ -2,9 +2,9 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
-import 'store/news_store.dart';
 
 import '../../../../sl.dart';
+import 'store/news_store.dart';
 
 @RoutePage()
 class NewsScreen extends StatelessWidget {

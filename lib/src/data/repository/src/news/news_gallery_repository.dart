@@ -1,5 +1,4 @@
-import 'package:parse_template/src/data/base/api_response.dart';
-
+import '../../../base/api_response.dart';
 import '../../../data_source/repository/parse_sembast_repository_base.dart';
 import '../../../model/model.dart';
 

@@ -1,6 +1,6 @@
 {
-    "name": "parse_template",
-    "short_name": "parse_template",
+    "name": "okgun_b2b",
+    "short_name": "okgun_b2b",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
