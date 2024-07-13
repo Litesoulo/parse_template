@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
+import 'package:turkmen_localization_support/turkmen_localization_support.dart';
 
 import '../../../../../generated/strings.g.dart';
-import '../../../../core/config/localization/tk_cupertino_localization_delegate.dart';
-import '../../../../core/config/localization/tk_material_localizations_delegate.dart';
 import '../../../../core/config/router/app_router.dart';
 import '../../../../sl.dart';
 import 'store/connectivity_store.dart';
@@ -45,8 +44,7 @@ class _MaterialApp extends StatelessWidget {
           // Locale
           locale: TranslationProvider.of(context).flutterLocale,
           localizationsDelegates: const [
-            TkMaterialLocalizations.delegate,
-            TkCupertinoLocalizations.delegate,
+            ...TkDelegates.delegates,
             GlobalMaterialLocalizations.delegate,
             GlobalWidgetsLocalizations.delegate,
             GlobalCupertinoLocalizations.delegate,
@@ -59,8 +57,7 @@ class _MaterialApp extends StatelessWidget {
             context: context,
             locale: const Locale('tk'),
             delegates: const [
-              TkMaterialLocalizations.delegate,
-              TkCupertinoLocalizations.delegate,
+              ...TkDelegates.delegates,
             ],
             child: child,
           ),
